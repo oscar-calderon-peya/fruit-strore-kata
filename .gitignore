@@ -1,0 +1,19 @@
+.gradle
+**/build/
+!src/**/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Cache of project
+.gradletasknamecache
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+/gradlew
+/gradlew.bat
+/gradle/wrapper/gradle-wrapper.jar
