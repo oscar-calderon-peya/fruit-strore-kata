@@ -1,12 +1,12 @@
-package com.myaccount
+package com.fruitstore
 
 import org.assertj.core.api.BDDAssertions.then
 import org.junit.Test
 
-class TripServiceTest {
+class FruitStoreTest {
 
     @Test
     fun `failed test`() {
-        then(false).isEqualTo(true)
+        then(true).isEqualTo(true)
     }
 }

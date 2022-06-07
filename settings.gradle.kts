@@ -1,2 +1,2 @@
-rootProject.name = "trip-service-kata-kotlin"
+rootProject.name = "fruit-store-kata-kotlin"
 
