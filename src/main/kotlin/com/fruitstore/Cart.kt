@@ -7,15 +7,18 @@ class Cart(private val cartRepository: CartRepository, private val promotions: L
     }
 
     fun calculateTotal(): Int {
+        return calculateSubTotal() - promotions.calculateDiscounts()
+    }
+
+
+    private fun List<Promotions>.calculateDiscounts(): Int {
+        return this.sumBy { it.calculateDiscount() }
+    }
+
+    private fun calculateSubTotal(): Int {
         val items = cartRepository.getItems()
-        return calculateSubTotal(items) - calculateDiscounts()
+        return items.sumBy { it.price }
     }
-
-    private fun calculateDiscounts(): Int {
-        return promotions.sumBy { it.calculateDiscount() }
-    }
-
-    private fun calculateSubTotal(items: List<Item>) = items.sumBy { it.price }
 }
 
 abstract class Promotions(private val cartRepository: CartRepository) {
