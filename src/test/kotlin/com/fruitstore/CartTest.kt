@@ -4,37 +4,25 @@ import org.assertj.core.api.BDDAssertions.then
 import org.junit.Test
 
 class CartTest {
-
     private val cartRepository = InMemoryCartRepository()
     private val cart = Cart(cartRepository)
 
     @Test
     fun `should add several items`() {
-        val fruits = listOf(banana, apple, pear)
+        cart.addItem(banana)
+        cart.addItem(apple)
+        cart.addItem(pear)
 
-        whenAddingAnItem(*fruits.toTypedArray())
-
-        thenCartContains(fruits)
+        then(cartRepository.getItems()).containsExactlyElementsOf(listOf(banana, apple, pear))
     }
 
     @Test
     fun `should calculate total`() {
-        val fruits = listOf(banana, apple, pear)
-
-        whenAddingAnItem(*fruits.toTypedArray())
+        cart.addItem(banana.copy(price = 5))
+        cart.addItem(apple.copy(price = 10))
+        cart.addItem(pear.copy(price = 10))
 
         then(cart.calculateTotal()).isEqualTo(25)
-    }
-
-
-    private fun thenCartContains(fruits: List<Item>) {
-        then(cartRepository.getItems()).containsExactlyElementsOf(fruits)
-    }
-
-    private fun whenAddingAnItem(vararg item: Item) {
-        item.forEach {
-            cart.addItem(it)
-        }
     }
 
     companion object {
