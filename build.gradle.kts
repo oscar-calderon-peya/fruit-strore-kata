@@ -14,7 +14,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     testImplementation("junit", "junit", "4.12")
     testImplementation("org.assertj:assertj-core:3.11.1")
-    testImplementation("org.mockito:mockito-core:2.7.2")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 }
 
 configure<JavaPluginConvention> {
